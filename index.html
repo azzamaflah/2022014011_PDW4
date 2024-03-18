@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Pertemuan 4</title>
+    <!-- Mengimpor script SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h2 style="color: white">Welcome to My Website</h2>
+        <p id="currentDate" style="color: white"></p>
+        <img src="assets/bebek.png" alt="gambarbebek" />
+        <div class="login-box">
+          <h1>Login Form</h1>
+          <form id="loginForm">
+            <div class="input-group">
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" required />
+            </div>
+            <div class="input-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit" id="loginButton">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk mendapatkan tanggal saat ini
+      function getCurrentDate() {
+        var currentDate = new Date();
+        var options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        return currentDate.toLocaleDateString("en-US", options);
+      }
+
+      // Menetapkan tanggal saat ini ke elemen HTML dengan id "currentDate"
+      document.getElementById("currentDate").textContent =
+        "Today's Date: " + getCurrentDate();
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Mencegah pengiriman formulir
+
+          // Mendapatkan username dan password
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+
+          // Lakukan validasi login di sini (misalnya, periksa ke database)
+
+          // Untuk tujuan demonstrasi, tampilkan alert SweetAlert2
+          Swal.fire({
+            icon: "success",
+            title: "Login Success",
+            text: "Login Berhasil Sebagai " + username,
+          });
+        });
+    </script>
+  </body>
+</html>
